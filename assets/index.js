@@ -12,7 +12,7 @@ const getProducts = async () => {
         <div class="card-body">
           <h5 class="card-title">${product.description}</h5>
           <p class="card-text">R$ ${product.price.toFixed(2)}</p>
-          <a href="#" class="btn btn-primary">Ir para o site</a>
+          <a href="https://www.kabum.com.br/busca/${product.description}" class="btn btn-primary">Ir para o site</a>
         </div>
       </div>`
     }
@@ -21,4 +21,4 @@ const getProducts = async () => {
 
 }
 
-getProducts()
+getProducts()  
