@@ -13,7 +13,7 @@ const getProducts = async () => {
       link = `https://www.kabum.com.br/busca/${product.description.replace(' - K001','')}`
 
     if(product.description.includes('P001'))
-      link = `https://www.pichau.com.br/${product.description.replace(' - P001','').replaceAll(' ','-').replaceAll(',','').replaceAll('.','-').replaceAll('/','-')}`
+      link = `https://www.pichau.com.br/${product.description.replace(' - P001','').replaceAll(' ','-').replaceAll(',','').replaceAll('.','-').replaceAll('/','-').replaceAll('--','-')}`
 
   
     productsHtml += `
