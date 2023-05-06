@@ -7,6 +7,15 @@ const getProducts = async () => {
   const products = await result.json()
   let productsHtml = ''
   for (const product of products) {
+    let link = ''
+
+    if(product.description.includes('K001'))
+      link = `https://www.kabum.com.br/busca/${product.description.replace(' - K001','')}`
+
+    if(product.description.includes('P001'))
+      link = `https://www.pichau.com.br/${product.description.replace(' - P001','')}`
+
+  
     productsHtml += `
         <div class='col-6 d-flex justify-content-center'>
         <div class="card mb-3" style="max-width: 540px; min-height: 200px">
@@ -25,7 +34,7 @@ const getProducts = async () => {
             </div>
 
             <div class="card-footer text-end">
-            <a href="https://www.kabum.com.br/busca/${product.description}" class="btn btn-primary">Verificar no site</a>
+            <a href="${link}" class="btn btn-primary">Verificar no site</a>
           </div>
           </div>
         </div>
