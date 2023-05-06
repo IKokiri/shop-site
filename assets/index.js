@@ -9,15 +9,11 @@ const getProducts = async () => {
   for (const product of products) {
     let link = ''
 
-    if(product.description.includes('K001'))
-      link = `https://www.kabum.com.br/busca/${product.description.replace(' - K001','')}`
+    if(product.description.includes('K001')) link = `https://www.kabum.com.br/busca/${product.description.replace(' - K001','')}`
+    if(product.description.includes('P001')) link = `https://www.pichau.com.br/${product.description.replace(' - P001','').replaceAll(' ','-').replaceAll(',','').replaceAll('.','-').replaceAll('/','-').replaceAll('--','-')}`
 
-    if(product.description.includes('P001'))
-      link = `https://www.pichau.com.br/${product.description.replace(' - P001','').replaceAll(' ','-').replaceAll(',','').replaceAll('.','-').replaceAll('/','-').replaceAll('--','-')}`
-
-  
     productsHtml += `
-        <div class='col-6 d-flex justify-content-center'>
+        <div class='col-md-6 col-sm-12 d-flex justify-content-center'>
         <div class="card mb-3" style="max-width: 540px; min-height: 200px">
           <div class="row g-0">
             <div class="col-md-4">
