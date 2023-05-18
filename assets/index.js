@@ -1,4 +1,4 @@
-const url = 'http://54.244.79.39:3000/product'
+const url = 'http://localhost:3000/product'
 let checkedTags = []
 const getProducts = async () => {
   const listTags = []
@@ -16,10 +16,6 @@ const getProducts = async () => {
     }
 
     if(!hasTag) continue
-    let link = ''
-
-    if (product.description.includes('K001')) link = `https://www.kabum.com.br/busca/${product.description.replace(' - K001', '')}`
-    if (product.description.includes('P001')) link = `https://www.pichau.com.br/${product.description.replace(' - P001', '').replaceAll(' ', '-').replaceAll(',', '').replaceAll('.', '-').replaceAll('/', '-').replaceAll('--', '-')}`
 
     const currentTags = product.description.split(' ')
 
@@ -46,7 +42,7 @@ const getProducts = async () => {
             </div>
 
             <div class="card-footer text-end">
-            <a href="${link}" class="btn btn-primary">Verificar no site</a>
+            <a href="${product.link}" class="btn btn-primary">Verificar no site</a>
           </div>
           </div>
         </div>
