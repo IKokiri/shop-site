@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/product'
+const url = 'http://54.244.79.39:3000/product'
 let checkedTags = []
 const getProducts = async () => {
   const listTags = []
