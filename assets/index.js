@@ -1,8 +1,8 @@
 const url = 'http://54.244.79.39:3000/product'
 let checkedTags = []
-const getProducts = async () => {
+const getProducts = async (page=1) => {
   const listTags = []
-  const result = await fetch(url)
+  const result = await fetch(`${url}/?page=${page}`)
 
   const products = await result.json()
   let productsHtml = ''
