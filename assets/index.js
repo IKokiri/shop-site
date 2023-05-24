@@ -1,28 +1,12 @@
-const url = 'http://54.244.79.39:3000/product'
+const url = 'http://54.244.79.39:3000'
 let checkedTags = []
 const getProducts = async (page=1) => {
-  const listTags = []
-  const result = await fetch(`${url}/?page=${page}`)
+  
+  const result = await fetch(`${url}/product/?page=${page}&tags=${checkedTags.join()}`)
 
   const products = await result.json()
   let productsHtml = ''
   for (const product of products) {
-
-    let hasTag = true
-    if(checkedTags.length > 0){
-      for(let tag of checkedTags){
-        if(!product.description.toUpperCase().includes(tag.toUpperCase())) hasTag = false
-      }
-    }
-
-    if(!hasTag) continue
-
-    const currentTags = product.description.split(' ')
-
-    for (let currentTag of currentTags) {
-      if (listTags.includes(currentTag.replace(',','').toUpperCase())) continue
-      listTags.push(currentTag.replace(',','').toUpperCase())
-    }
 
     productsHtml += `
         <div class='col-md-6 col-sm-12 d-flex justify-content-center'>
@@ -49,13 +33,15 @@ const getProducts = async (page=1) => {
       </div>
       `
   }
-
-  showTags(listTags)
   document.querySelector('#products').innerHTML = `<div class='row'>${productsHtml}</div>`
 }
 
-const showTags = (listTags) => {
+const showTags = async () => {
+  const result = await fetch(`${url}/product/tag`)
+
+  let listTags = await result.json()
   listTags = listTags.sort()
+  console.log(listTags)
   let htmlTags = ''
   for (const tag of listTags) {
     let checked = ''
@@ -90,3 +76,4 @@ const showTags = (listTags) => {
 }
 
 getProducts()  
+showTags()
