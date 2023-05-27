@@ -42,7 +42,6 @@ const showTags = async () => {
 
   let listTags = await result.json()
   listTags = listTags.sort()
-  console.log(listTags)
   let htmlTags = ''
   for (const tag of listTags) {
     let checked = ''
