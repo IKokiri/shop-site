@@ -27,7 +27,7 @@ const getProducts = async (page=1) => {
             </div>
 
             <div class="card-footer text-end">
-            <a href="${product.link}" class="btn btn-primary">Verificar no site</a>
+            <a href="${product.link}" target='_blank' class="btn btn-primary">Verificar no site</a>
           </div>
           </div>
         </div>
