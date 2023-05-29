@@ -6,7 +6,7 @@ const getProducts = async (page=1) => {
 
   const products = await result.json()
   let productsHtml = ''
-  for (const product of products) {
+  for (const product of products["search"]) {
 
     productsHtml += `
         <div class='col-md-6 col-sm-12 d-flex justify-content-center'>
@@ -34,7 +34,7 @@ const getProducts = async (page=1) => {
       </div>
       `
   }
-  document.querySelector('#products').innerHTML = `<div class='row'>${productsHtml}</div>`
+  document.querySelector('#products').innerHTML = `<div class='row'>${productsHtml}</div> ${products.total}`
 }
 
 const showTags = async () => {
