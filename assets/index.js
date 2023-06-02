@@ -76,4 +76,3 @@ const showTags = async () => {
 }
 
 getProducts()  
-showTags()
