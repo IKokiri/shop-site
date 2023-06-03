@@ -1,8 +1,8 @@
 const url = 'http://54.244.79.39:3000'
-let checkedTags = []
+let checkedSizes = []
 const getProducts = async (page=1) => {
   
-  const result = await fetch(`${url}/product/?page=${page}&tags=${checkedTags.join()}`)
+  const result = await fetch(`${url}/product/?page=${page}&size=${checkedSizes.join()}`)
 
   const products = await result.json()
   let productsHtml = ''
@@ -38,7 +38,7 @@ const getProducts = async (page=1) => {
 }
 
 const showTags = async () => {
-  const result = await fetch(`${url}/product/tag`)
+  const result = await fetch(`${url}/product/size`)
 
   let listTags = await result.json()
   listTags = listTags.sort()
@@ -46,7 +46,7 @@ const showTags = async () => {
   for (const tag of listTags) {
     let checked = ''
     
-    if(checkedTags.includes(tag)) checked = 'checked'
+    if(checkedSizes.includes(tag)) checked = 'checked'
     htmlTags += `
     <div class='col-2'>
     <div class="form-check">
@@ -67,12 +67,12 @@ const showTags = async () => {
     checkbox.addEventListener('change', () => {
       const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
-      checkedTags = Array.from(checkboxes).map((checkbox) => checkbox.value);
+      checkedSizes = Array.from(checkboxes).map((checkbox) => checkbox.value);
 
       getProducts()
     });
   });
 
 }
-
+showTags()
 getProducts()  
