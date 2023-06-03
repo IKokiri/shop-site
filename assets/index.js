@@ -22,7 +22,7 @@ const getProducts = async (page=1) => {
 
               <div class="card-body">
                 <h5 class="card-title" style="color:#FF0000">R$ ${product.price.toFixed(2).replace(',', '').replace('.', ',')}</h5>
-                <span>${new Date(product.createOnDate).toLocaleString('pt-BR', { hour12: false })}</span>
+                <span>${new Date(product.create_on_date).toLocaleString('pt-BR', { hour12: false })}</span>
                 </div>
             </div>
 
